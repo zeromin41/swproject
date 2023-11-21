@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Frag2">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:background="@drawable/major_table_outside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/textView_0"
+            android:layout_width="253dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="전공필수"
+            android:textSize="32sp">
+
+        </TextView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_weight="1">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/major_table_outside">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/major_table_inside">
+
+                    <TextView
+                        android:id="@+id/textView_1"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/major_table_inside"
+                        android:gravity="center|top"
+                        android:text="3학년 1학기"
+                        android:textSize="22sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/major_table_inside"
+                        android:text=" 머신러닝"
+                        android:textSize="22sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" 모바일프로그래밍"
+                        android:textSize="22sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" 컴퓨터네트워크"
+                        android:textSize="22sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView_2"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="3학년 2학기"
+                        android:textSize="22sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" 운영체제"
+                        android:textSize="22sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" 소프트웨어공학"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/textView_3"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="4학년"
+                        android:textSize="22sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" 융합소프트웨어종합설계2"
+                        android:textSize="22sp" />
+
+                </TableRow>
+            </TableLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <Spinner
+            android:id="@+id/gradeSpinner"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/grade" />
+
+        <Spinner
+            android:id="@+id/semesterSpinner"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:entries="@array/semester" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkBoxLayout"
+        android:layout_width="408dp"
+        android:layout_height="268dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="학점"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

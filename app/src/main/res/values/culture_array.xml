@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="area">
+        <item> 영역 </item>
+        <item> 1영역 </item>
+        <item> 2영역 </item>
+        <item> 3영역 </item>
+        <item> 4영역 </item>
+        <item> 5영역 </item>
+        <item> 6영역 </item>
+        <item> 7영역 </item>
+        <item> 8영역 </item>
+        <item> 한경교양 </item>
+
+    </string-array>
+
+
+</resources>
