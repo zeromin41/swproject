@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
 
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="0dp"
-        android:layout_height="121dp"
-        android:gravity="center"
-        android:text="취업 정보 창"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_url"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="프로그래머스 바로가기"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_url2"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="잡플래닛 바로가기"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_url3"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="워크넷 바로가기"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_url4"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="월드잡 바로가기"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_url5"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="잡알리오 바로가기"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_url6"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="ncs 바로가기"
+        android:textSize="20dp" />
+
+</LinearLayout>

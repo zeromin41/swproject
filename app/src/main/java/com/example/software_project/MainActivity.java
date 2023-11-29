@@ -32,7 +32,6 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
-
     public static final int SUBJECT_REQUEST_CODE = 1;  // 이 값을 정의합니다.
 
     private void performCommonTask() {  // 공통 작업 수행
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         performCommonTask();
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
