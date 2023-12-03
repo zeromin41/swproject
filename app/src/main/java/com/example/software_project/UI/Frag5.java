@@ -1,6 +1,5 @@
 package com.example.software_project.UI;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.software_project.R;
@@ -66,36 +63,36 @@ public class Frag5 extends Fragment {
 
         license.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                totalScore += 1.0;
+                totalScore += 1.5;
             } else {
-                totalScore -= 1.0;
+                totalScore -= 1.5;
             }
             updateScore();
         });
 
         toeic.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                totalScore += 1.0;
+                totalScore += 1.5;
             } else {
-                totalScore -= 1.0;
+                totalScore -= 1.5;
             }
             updateScore();
         });
 
         thesis.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                totalScore += 1.0;
+                totalScore += 1.5;
             } else {
-                totalScore -= 1.0;
+                totalScore -= 1.5;
             }
             updateScore();
         });
 
         internship.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                totalScore += 1.0;
+                totalScore += 1.5;
             } else {
-                totalScore -= 1.0;
+                totalScore -= 1.5;
             }
             updateScore();
         });

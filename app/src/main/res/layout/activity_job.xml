@@ -3,52 +3,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
 
     tools:context=".MainActivity">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_url"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:background="@drawable/round_button"
         android:text="프로그래머스 바로가기"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
-    <Button
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <android.widget.Button
         android:id="@+id/btn_url2"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:background="@drawable/round_button"
         android:text="잡플래닛 바로가기"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
-    <Button
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <android.widget.Button
         android:id="@+id/btn_url3"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
         android:text="워크넷 바로가기"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"/>
 
-    <Button
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <android.widget.Button
         android:id="@+id/btn_url4"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:text="월드잡 바로가기"
-        android:textSize="20dp" />
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:text="웓드잡 바로가기"
+        android:textSize="20dp"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"/>
 
-    <Button
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <android.widget.Button
         android:id="@+id/btn_url5"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
         android:text="잡알리오 바로가기"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/btn_url6"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:text="ncs 바로가기"
-        android:textSize="20dp" />
+        android:layout_height="15dp"/>
+
+    <android.widget.Button
+        android:id="@+id/btn_url6"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:text="NCS 바로가기"
+        android:textSize="20dp"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
 
 </LinearLayout>

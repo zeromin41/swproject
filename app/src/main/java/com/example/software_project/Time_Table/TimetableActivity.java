@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -141,7 +142,6 @@ public class TimetableActivity extends AppCompatActivity {
                 }
 
             }
-
             //체크박스 추가
             for (String subject : subjectList) {
                 CheckBox checkBox = new CheckBox(this);

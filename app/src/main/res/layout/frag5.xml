@@ -19,9 +19,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textStyle="bold"
             android:text="졸업 요건" />
+        <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
         <TableLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -171,19 +174,19 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity=""
-        android:paddingLeft="20dp"
         android:text="토익 : 550점 이상 \n 자격증 : 정보처리기사, CCNA, OCA, MSCA, 정보보안기사 \n 졸업 작품 : 한경 국립대학교 교육혁신본부 주관 캡스톤 디자인 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;경진대회에 작품을 출품한자 \n 논문 : 학술대회 논문을 발표한 자 \n 전공 인턴쉽 : 전공관련 분야에서 1회 이상 인턴쉽 과정 이수 \n &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(방학2달 기준) \n 교육 훈련 : 국가기관에서 인정하는 취업자교육 1회 이상 이수한 자 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;혹은 교내에서 실시하고 있는 취업 프로그램을 12시간 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;이상 이수한 자"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginTop="100dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/scoreTextView"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="84dp"
         android:gravity="center"
         android:text="합산점수"
         android:textSize="34sp"
@@ -198,10 +201,10 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="합산점수가 3.0이상일 시 졸업 요건 충족"
-        android:textSize="15sp"
         android:textColor="#ff6861"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreTextView" />
 

@@ -36,7 +36,6 @@ public class Login_Activity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_login, container, false);
-
         //바텀 네비게이션 숨기기
         BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottomNavi);
         if (bottomNav != null) {

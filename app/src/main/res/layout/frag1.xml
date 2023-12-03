@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="680dp"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_weight="6"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="match_parent">
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:id="@+id/linearLayout_timetable"
                 android:layout_width="match_parent"
@@ -20,10 +20,10 @@
                 <GridLayout
                     android:id="@+id/gridlayout_timetable"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:columnCount="6"
                     android:rowCount="27"
-                    android:layout_marginBottom="55dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_rowWeight="1"
