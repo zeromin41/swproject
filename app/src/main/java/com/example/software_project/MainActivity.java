@@ -11,12 +11,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.software_project.Drawer.JobInfo_Activity;
 import com.example.software_project.Drawer.Profile_Activity;
@@ -232,6 +235,34 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // SharedPreferences에서 데이터 로드
+        SharedPreferences sharedPreferences = getSharedPreferences("ProfileInfo", MODE_PRIVATE);
+        String photoUriStr = sharedPreferences.getString("PhotoUri", "");
+        String name = sharedPreferences.getString("Name", "_____");
+        String studentNumber = sharedPreferences.getString("StudentNumber", "__________");
+        String birthDate = sharedPreferences.getString("BirthDate", "________");
+
+        // 드로어 레이아웃의 ImageView에 사진 표시
+        if (!photoUriStr.equals("")) {
+            ImageView profileImageView = findViewById(R.id.imageView);
+            profileImageView.setImageURI(Uri.parse(photoUriStr));
+        }
+
+        // 드로어 레이아웃의 TextView에 정보 표시
+        // 예를 들어, drawerLayout에 이름, 학번, 생년월일을 표시하는 TextView가 있다고 가정합니다.
+        TextView nameTextView = drawerLayout.findViewById(R.id.textView26);
+        TextView studentNumberTextView = drawerLayout.findViewById(R.id.textView27);
+        TextView birthDateTextView = drawerLayout.findViewById(R.id.textView28);
+
+        nameTextView.setText(name);
+        studentNumberTextView.setText(studentNumber);
+        birthDateTextView.setText(birthDate);
     }
 
 }

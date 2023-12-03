@@ -3,8 +3,11 @@ package com.example.software_project.Drawer;
 import static java.security.AccessController.getContext;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
@@ -21,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.software_project.R;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -66,7 +70,18 @@ public class Profile_Activity extends AppCompatActivity {
             String nameStr = name.getText().toString();
             String ageStr = age.getText().toString();
             String birthStr = birthday.getText().toString();
-            Toast.makeText(getApplicationContext(),"이름: "+nameStr +", 나이: "+ageStr+", 생년월일: "+birthStr, Toast.LENGTH_SHORT).show();
+
+            // SharedPreferences에 저장
+            SharedPreferences sharedPreferences = getSharedPreferences("ProfileInfo", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("Name", nameStr);
+            editor.putString("StudentNumber", ageStr);
+            editor.putString("BirthDate", birthStr);
+            // 사진 관련 데이터도 여기에 저장할 수 있습니다 (예: editor.putString("PhotoUri", photoUriStr);)
+            editor.apply();
+
+            // 저장 완료 메시지 표시
+            Toast.makeText(getApplicationContext(),"저장됨", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -80,9 +95,22 @@ public class Profile_Activity extends AppCompatActivity {
                         Bundle extras = result.getData().getExtras();
                         bitmap = (Bitmap) extras.get("data");
                         imageView.setImageBitmap(bitmap);
+
+                        // 사진 URI를 SharedPreferences에 저장
+                        Uri imageUri = getImageUri(getApplicationContext(), bitmap);
+                        SharedPreferences sharedPreferences = getSharedPreferences("ProfileInfo", MODE_PRIVATE);
+                        sharedPreferences.edit().putString("PhotoUri", imageUri.toString()).apply();
                     }
                 }
             });
+
+    // Bitmap을 Uri로 변환하는 메소드
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 
     // 생년월일 선택 관련 코드
     private void showDateDialog(){
@@ -113,3 +141,40 @@ public class Profile_Activity extends AppCompatActivity {
         }
     };
 }
+
+
+
+    /*@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+
+        // 카메라 관련 UI 컴포넌트 초기화
+        imageView = findViewById(R.id.imageView);
+        Button picBtn = findViewById(R.id.pic_btn);
+        picBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            activityResultPicture.launch(intent);
+        });
+
+        /*String selectedDateStr = dataFormat.format(curDate);
+        birthday.setText(selectedDateStr); // 버튼의 텍스트 수정*/
+
+        // 사용자 입력 UI 컴포넌트 초기화
+        /*name = findViewById(R.id.editTextTextPersonName);
+        age = findViewById(R.id.editTextTextPersonName2);
+        birthday = findViewById(R.id.button);
+        saveButton = findViewById(R.id.button2);
+
+        // 날짜 초기화 및 버튼 리스너 설정
+        birthday.setText(dataFormat.format(curDate));
+        birthday.setOnClickListener(view -> showDateDialog());
+
+        // 저장 버튼 리스너 설정
+        saveButton.setOnClickListener(view -> {
+            String nameStr = name.getText().toString();
+            String ageStr = age.getText().toString();
+            String birthStr = birthday.getText().toString();
+            Toast.makeText(getApplicationContext(),"이름: "+nameStr +", 나이: "+ageStr+", 생년월일: "+birthStr, Toast.LENGTH_SHORT).show();
+        });
+    }*/
