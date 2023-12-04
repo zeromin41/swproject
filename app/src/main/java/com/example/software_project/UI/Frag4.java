@@ -5,28 +5,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_project.R;
 
 public class Frag4 extends Fragment {
 
+    private MyViewModel viewModel;
+
     private CheckBox graduationProjectCheckbox;
     private CheckBox educationTrainingCheckbox;
     private CheckBox internship;
-    private CheckBox thesis;
-    private CheckBox toeic;
     private CheckBox license;
+    private CheckBox toeic;
+    private CheckBox thesis;
 
     private TextView scoreTextView;
-
-    private double totalScore = 0.0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag4, container, false);
+
+        // ViewModel 초기화
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         // XML에서 정의한 각 뷰의 ID 가져오기
         graduationProjectCheckbox = view.findViewById(R.id.graduationProjectCheckbox);
@@ -38,70 +43,61 @@ public class Frag4 extends Fragment {
 
         scoreTextView = view.findViewById(R.id.scoreTextView);
 
+        // 체크박스의 상태 설정
+        graduationProjectCheckbox.setChecked(viewModel.isGraduationProjectChecked());
+        educationTrainingCheckbox.setChecked(viewModel.isEducationTrainingChecked());
+        internship.setChecked(viewModel.isInternshipChecked());
+        license.setChecked(viewModel.isLicenseChecked());
+        toeic.setChecked(viewModel.isToeicChecked());
+        thesis.setChecked(viewModel.isThesisChecked());
+
         // 체크박스의 상태 변화 감지
-        graduationProjectCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                // 졸업 작품 체크 시 3.0점 추가
-                totalScore += 3.0;
-            } else {
-                // 체크 해제 시 3.0점 감소
-                totalScore -= 3.0;
-            }
-            updateScore();
-        });
+        graduationProjectCheckbox.setOnCheckedChangeListener(this::onCheckboxChanged);
+        educationTrainingCheckbox.setOnCheckedChangeListener(this::onCheckboxChanged);
+        internship.setOnCheckedChangeListener(this::onCheckboxChanged);
+        license.setOnCheckedChangeListener(this::onCheckboxChanged);
+        toeic.setOnCheckedChangeListener(this::onCheckboxChanged);
+        thesis.setOnCheckedChangeListener(this::onCheckboxChanged);
 
-        educationTrainingCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                // 교육 훈련 체크 시 2.0점 추가
-                totalScore += 2.0;
-            } else {
-                // 체크 해제 시 2.0점 감소
-                totalScore -= 2.0;
-            }
-            updateScore();
-        });
-
-        license.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                totalScore += 1.5;
-            } else {
-                totalScore -= 1.5;
-            }
-            updateScore();
-        });
-
-        toeic.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                totalScore += 1.5;
-            } else {
-                totalScore -= 1.5;
-            }
-            updateScore();
-        });
-
-        thesis.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                totalScore += 1.5;
-            } else {
-                totalScore -= 1.5;
-            }
-            updateScore();
-        });
-
-        internship.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                totalScore += 1.5;
-            } else {
-                totalScore -= 1.5;
-            }
-            updateScore();
-        });
+        // 초기 합산점수 설정
+        updateScore();
 
         return view;
     }
 
+    private void onCheckboxChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+            case R.id.graduationProjectCheckbox:
+                viewModel.setGraduationProjectChecked(isChecked);
+                viewModel.addToTotalScore(isChecked ? 3.0 : -3.0);
+                break;
+            case R.id.educationTrainingCheckbox:
+                viewModel.setEducationTrainingChecked(isChecked);
+                viewModel.addToTotalScore(isChecked ? 2.0 : -2.0);
+                break;
+            case R.id.internship:
+                viewModel.setInternshipChecked(isChecked);
+                viewModel.addToTotalScore(isChecked ? 1.5 : -1.5);
+                break;
+            case R.id.license:
+                viewModel.setLicenseChecked(isChecked);
+                viewModel.addToTotalScore(isChecked ? 1.5 : -1.5);
+                break;
+            case R.id.toeic:
+                viewModel.setToeicChecked(isChecked);
+                viewModel.addToTotalScore(isChecked ? 1.5 : -1.5);
+                break;
+            case R.id.thesis:
+                viewModel.setThesisChecked(isChecked);
+                viewModel.addToTotalScore(isChecked ? 1.5 : -1.5);
+                break;
+        }
+
+        updateScore();
+    }
+
     private void updateScore() {
-        // 합산점수을 표시하는 TextView 업데이트
-        scoreTextView.setText(String.format("합산점수 : %.1f", totalScore));
+        // 합산점수를 표시하는 TextView 업데이트
+        scoreTextView.setText(String.format("합산점수 : %.1f", viewModel.getTotalScore()));
     }
 }
