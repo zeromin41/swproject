@@ -59,6 +59,7 @@
             <!-- 두 번째 행 -->
             <TableRow>
                 <CheckBox
+                    android:id="@+id/checkbox1"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -66,6 +67,7 @@
                     android:text="말하기와 글쓰기" />
 
                 <CheckBox
+                    android:id="@+id/checkbox2"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -77,6 +79,7 @@
             <!-- 세 번째 행 -->
             <TableRow>
                 <CheckBox
+                    android:id="@+id/checkbox3"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -85,6 +88,7 @@
 
 
                 <CheckBox
+                    android:id="@+id/checkbox4"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -100,6 +104,7 @@
                     android:text= "" />
 
                 <CheckBox
+                    android:id="@+id/checkbox5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

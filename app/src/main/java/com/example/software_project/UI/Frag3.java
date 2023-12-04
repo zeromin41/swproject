@@ -267,6 +267,12 @@ public class Frag3 extends Fragment {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // XML에 정의된 체크박스 상태 복원
+                CheckBox checkBox1 = getView().findViewById(R.id.checkbox1);
+                CheckBox checkBox2 = getView().findViewById(R.id.checkbox2);
+                CheckBox checkBox3 = getView().findViewById(R.id.checkbox3);
+                CheckBox checkBox4 = getView().findViewById(R.id.checkbox4);
+                CheckBox checkBox5 = getView().findViewById(R.id.checkbox5);
                 // 체크박스 상태 저장
                 checkBoxStates.put(checkBoxTag, isChecked);
 
@@ -278,6 +284,7 @@ public class Frag3 extends Fragment {
 
                 // 점수 업데이트
                 updateScore();
+                score = sharedPreferences.getInt("Score", 0);
                 // 체크박스 상태 저장
                 //saveCheckBoxState(((String) checkBox.getTag()), isChecked);
             }
@@ -298,10 +305,21 @@ public class Frag3 extends Fragment {
             }
         }
     }
+
+    private void restoreCheckBoxState(CheckBox checkBox) {
+        String checkBoxTag = (String) checkBox.getTag();
+        boolean isChecked = sharedPreferences.getBoolean(checkBoxTag, false);
+        checkBox.setChecked(isChecked);
+    }
+
     private void updateScore () {
         // 점수를 표시
         TextView scoreTextView = getView().findViewById(R.id.scoreTextView);
         scoreTextView.setText("총 학점 60/ " + score);
+        // SharedPreferences에 점수 저장
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Score", score);
+        editor.apply();
     }
 
     private void showToast (String message){

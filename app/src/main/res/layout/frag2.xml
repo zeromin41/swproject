@@ -64,6 +64,7 @@
             <!-- 두 번째 행 -->
             <TableRow>
                 <CheckBox
+                    android:id="@+id/checkbox1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -71,6 +72,7 @@
                     android:text="머신러닝" />
 
                 <CheckBox
+                    android:id="@+id/checkbox2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -78,6 +80,7 @@
                     android:text="소프트웨어공학" />
 
                 <CheckBox
+                    android:id="@+id/checkbox3"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
@@ -88,6 +91,7 @@
             <!-- 세 번째 행 -->
             <TableRow>
                 <CheckBox
+                    android:id="@+id/checkbox4"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -110,6 +114,7 @@
             </TableRow>
             <TableRow>
                 <CheckBox
+                    android:id="@+id/checkbox5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

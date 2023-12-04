@@ -128,6 +128,13 @@ public class Frag2 extends Fragment {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // XML에 정의된 체크박스 상태 복원
+                CheckBox checkBox1 = getView().findViewById(R.id.checkbox1);
+                CheckBox checkBox2 = getView().findViewById(R.id.checkbox2);
+                CheckBox checkBox3 = getView().findViewById(R.id.checkbox3);
+                CheckBox checkBox4 = getView().findViewById(R.id.checkbox4);
+                CheckBox checkBox5 = getView().findViewById(R.id.checkbox5);
+
                 // 체크박스 상태 저장
                 checkBoxStates.put(checkBoxTag, isChecked);
                 if (isChecked) {  //CheckBox 체크 하면 True
@@ -140,6 +147,7 @@ public class Frag2 extends Fragment {
                 // 체크박스 상태 저장
                 //saveCheckBoxState(((String) checkBox.getTag()), isChecked);
             }
+
         });
     }
 
@@ -157,6 +165,12 @@ public class Frag2 extends Fragment {
                 }
             }
         }
+    }
+
+    private void restoreCheckBoxState(CheckBox checkBox) {
+        String checkBoxTag = (String) checkBox.getTag();
+        boolean isChecked = sharedPreferences.getBoolean(checkBoxTag, false);
+        checkBox.setChecked(isChecked);
     }
 
     private void updateScore () {
