@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -142,6 +141,7 @@ public class TimetableActivity extends AppCompatActivity {
                 }
 
             }
+
             //체크박스 추가
             for (String subject : subjectList) {
                 CheckBox checkBox = new CheckBox(this);
@@ -241,17 +241,17 @@ public class TimetableActivity extends AppCompatActivity {
         public void run() {
 
             //데이터베이스에 데이터 추가
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "15:30-16:30", "데이터베이스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "14:00-16:00", "데이터베이스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "09:30-11:00", "운영체제"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "09:30-11:00", "운영체제"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "16:00-18:00", "컴퓨터그래픽스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("금", "11:00-12:00", "컴퓨터그래픽스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "16:30-18:00", "소프트웨어공학"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "14:30-16:00", "소프트웨어공학"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "11:30-14:30", "융합소프트웨어프로젝트"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "13:30-15:00", "딥러닝"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "16:30-18:00", "딥러닝"));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "15:30-16:30", "데이터베이스",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "14:00-16:00", "데이터베이스",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "09:30-11:00", "운영체제",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "09:30-11:00", "운영체제",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "16:00-18:00", "컴퓨터그래픽스",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("금", "11:00-12:00", "컴퓨터그래픽스",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "16:30-18:00", "소프트웨어공학",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "14:30-16:00", "소프트웨어공학",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "11:30-14:30", "융합소프트웨어프로젝트",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "13:30-15:00", "딥러닝",false));
+            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "16:30-18:00", "딥러닝",false));
 
             scheduleInfos = db.ScheduleDao().getAll();
 

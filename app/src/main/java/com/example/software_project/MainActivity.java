@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Switch darkModeSwitch;
 
+    public static boolean first = true;
 
 
 

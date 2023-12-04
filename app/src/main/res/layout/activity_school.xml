@@ -35,7 +35,6 @@
         android:layout_height="30dp"/>
 
     <fragment
-        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/map"

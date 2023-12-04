@@ -13,4 +13,7 @@ public interface ScheduleDao {
     List<Schedule_Info> getAll();
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertUserInfo(Schedule_Info user_info);
+    @Query("UPDATE SCHEDULE SET state = :newState WHERE subject = :subject")
+    void updateStateBySubject(String subject, boolean newState);
+
 }

@@ -2,7 +2,9 @@ package com.example.software_project.UI;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +19,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
+import com.example.software_project.MainActivity;
 import com.example.software_project.R;
 import com.example.software_project.Time_Table.ScheduleDatabase;
 import com.example.software_project.Time_Table.Schedule_Info;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Frag1 extends Fragment {
 
@@ -31,8 +35,11 @@ public class Frag1 extends Fragment {
     private ScheduleDatabase db;
     private List<Schedule_Info> scheduleInfos;
     private List<String> subjectList;
+    private List<Boolean> stateList;
 
     private List<TextView>  textViews;
+
+    CheckBox checkBox;
 
     Thread thread;
 
@@ -54,6 +61,7 @@ public class Frag1 extends Fragment {
             throw new RuntimeException(e);
         }
         //과목리스트생성
+        stateList = new ArrayList<>();
         subjectList = addSubject(scheduleInfos);
 
         LinearLayout linearLayoutContainer = view.findViewById(R.id.linearLayout_timetable);
@@ -64,6 +72,7 @@ public class Frag1 extends Fragment {
 
         try {
             for (int i = 0; i < scheduleInfos.size(); i++) {
+
                 String day = scheduleInfos.get(i).getDay();
                 String time = scheduleInfos.get(i).getTime();
                 String subject = scheduleInfos.get(i).getSubject();
@@ -78,12 +87,6 @@ public class Frag1 extends Fragment {
                 int after_hour_num = Integer.parseInt(time.split("-")[1].split(":")[0]);
                 int after_minute_num = Integer.parseInt(time.split("-")[1].split(":")[1]);
 
-                // 예제로 TextView를 생성하여 데이터 표시
-                //TextView textView = createTimetableTextView(day, time, subject);
-
-                // GridLayout에 TextView 추가
-                //addViewToGridLayout(gridLayout, day, time, textView);
-
                 if (before_hour_num == after_hour_num && before_minute_num == after_minute_num) {
 
                 } else {
@@ -94,7 +97,7 @@ public class Frag1 extends Fragment {
                     int row = (before_hour_num - 9) * 2 + (before_minute_num == 30 ? 2 : 1);//행번호
 
                     //병합된 셀들 제거 작업 result수만큼 제거
-                    int temp = 0;
+
                     for (int j = 0; j < result - 1; j++) {
                         String delete_cell_hour = before_minute_num == 30 ? (before_hour_num + 1 < 10 ? "00" + String.valueOf(before_hour_num + 1) : String.valueOf(before_hour_num + 1)) : (before_hour_num < 10 ? "00" + String.valueOf(before_hour_num) : String.valueOf(before_hour_num));
 
@@ -137,19 +140,23 @@ public class Frag1 extends Fragment {
             }
 
             //체크박스 추가
-            for (String subject : subjectList) {
-                CheckBox checkBox = new CheckBox(requireActivity());
-                checkBox.setText(subject);
+            for (int i = 0; i<subjectList.size();i++) {
+                checkBox = new CheckBox(requireActivity());
+                checkBox.setText(subjectList.get(i));
                 // 필요에 따라 CheckBox의 속성을 설정할 수 있습니다.
                 checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
                     if (b){
                         //체크설정
                         checkCell(textViews,compoundButton.getText().toString());
+                        updateState(compoundButton.getText().toString(),true);
                     }else {
                         //체크해제
                         clearcheckCell(textViews,compoundButton.getText().toString());
+                        updateState(compoundButton.getText().toString(),false);
                     }
                 });
+                checkBox.setChecked(stateList.get(i));
+
                 linearLayoutContainer.addView(checkBox);
             }
         }catch (Exception e){
@@ -221,13 +228,24 @@ public class Frag1 extends Fragment {
         for (int i = 0; i < list.size(); i++){
 
             String subject = list.get(i).getSubject();
+            boolean state = list.get(i).getState();
 
             // 중복 여부를 확인하고 중복되지 않으면 리스트에 추가
             if (!infos.contains(subject)) {
+                Log.e("TTT","subject = " + subject);
+                Log.e("TTT","state = " + state);
+                stateList.add(state);
                 infos.add(subject);
             }
         }
         return infos;
+    }
+
+    private void updateState(String subject, boolean state){
+        Log.e("updateState" , "updateState = subject" +subject+ "  stat= "+state);
+        AsyncTask.execute(() -> {
+            db.ScheduleDao().updateStateBySubject(subject,state);
+        });
     }
 
     @Override
@@ -240,17 +258,21 @@ public class Frag1 extends Fragment {
         public void run() {
 
             //데이터베이스에 데이터 추가
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "15:30-16:30", "데이터베이스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "14:00-16:00", "데이터베이스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "09:30-11:00", "운영체제"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "09:30-11:00", "운영체제"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "16:00-18:00", "컴퓨터그래픽스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("금", "11:00-12:00", "컴퓨터그래픽스"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "16:30-18:00", "소프트웨어공학"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "14:30-16:00", "소프트웨어공학"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "11:30-14:30", "융합소프트웨어프로젝트"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "13:30-15:00", "딥러닝"));
-            db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "16:30-18:00", "딥러닝"));
+            if (MainActivity.first){
+                //최초한번만 실행되게
+                MainActivity.first = false;
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "15:30-16:30", "데이터베이스",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "14:00-16:00", "데이터베이스",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "09:30-11:00", "운영체제",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "09:30-11:00", "운영체제",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("목", "16:00-18:00", "컴퓨터그래픽스",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("금", "11:00-12:00", "컴퓨터그래픽스",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "16:30-18:00", "소프트웨어공학",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "14:30-16:00", "소프트웨어공학",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("수", "11:30-14:30", "융합소프트웨어프로젝트",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("월", "13:30-15:00", "딥러닝",false));
+                db.ScheduleDao().insertUserInfo(new Schedule_Info("화", "16:30-18:00", "딥러닝",false));
+            }
 
             scheduleInfos = db.ScheduleDao().getAll();
 

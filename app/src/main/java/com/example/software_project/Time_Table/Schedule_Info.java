@@ -18,12 +18,15 @@ public class Schedule_Info {
     public String time;
     @ColumnInfo(name = "subject")
     public String subject;
+    @ColumnInfo(name = "state")
+    public boolean state;
 
-    public Schedule_Info( String day, String time, String subject) {
+    public Schedule_Info( String day, String time, String subject,boolean state) {
 
         this.day = day;
         this.time = time;
         this.subject = subject;
+        this.state = state;
     }
 
     public long getId() {
@@ -40,5 +43,8 @@ public class Schedule_Info {
 
     public String getSubject() {
         return subject;
+    }
+    public boolean getState() {
+        return state;
     }
 }
