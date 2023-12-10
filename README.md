@@ -168,3 +168,50 @@
 
 ## 간트차트
 ![image](https://github.com/zeromin41/swproject/assets/130297212/d5314568-3b73-4850-b773-d56a7a99172f)
+
+## 결과보고서
+<details>
+<summary> 결과 보고서 링크 </summary>
+<!---->
+https://colab.research.google.com/drive/1jyGWw2U-DKJrMuphWhGPljCWZYMQewLq#scrollTo=G6UoDODNbBV3
+
+</details>
+
+## 실행화면
+
+### 로그인
+![image](https://github.com/zeromin41/swproject/assets/130297212/911e5368-0f61-4889-addf-8dee045d39c4)
+
+### 회원가입
+![image](https://github.com/zeromin41/swproject/assets/130297212/c97f444f-7f24-4d71-b3a7-f5a3c4926620)
+
+### 시간표
+![image](https://github.com/zeromin41/swproject/assets/130297212/26589165-3e00-4dd9-b7a1-eeb69ca3373e)
+
+### 전공 학점 계산
+![image](https://github.com/zeromin41/swproject/assets/130297212/a47d1ad4-18a6-48ef-9b38-3ae81e610a01)
+
+### 교양 학점 계산
+![image](https://github.com/zeromin41/swproject/assets/130297212/8af5d99d-30f8-452b-9a5f-1f50e578f6b2)
+
+### 졸업 요건
+![image](https://github.com/zeromin41/swproject/assets/130297212/6ca52d5a-a4cb-4f85-b114-ad8eea1e5eae)
+
+### 일지 작성란
+![image](https://github.com/zeromin41/swproject/assets/130297212/89fd0f34-93a3-4636-979d-6916ef7056f6)
+
+### 사이드 드로워 창
+![image](https://github.com/zeromin41/swproject/assets/130297212/fa02eb45-8468-43d1-bf70-296d5c455c0a)
+
+### 프로필
+![image](https://github.com/zeromin41/swproject/assets/130297212/c2fbc874-068b-411c-a227-28f47ea26e36)
+
+### 학교 정보
+![image](https://github.com/zeromin41/swproject/assets/130297212/91df4a1d-a35e-4cad-98d9-6fbc578a6e93)
+
+### 취업 정보
+![image](https://github.com/zeromin41/swproject/assets/130297212/46b49c70-4fb9-45d0-ad57-09fbfd291e81)
+
+#### 링크 연결 화면
+![image](https://github.com/zeromin41/swproject/assets/130297212/b60f2707-09d6-400f-8eb5-b3abfd3fc1b3)
+
